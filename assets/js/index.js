@@ -14,6 +14,7 @@ const canvas = document.querySelector('.world');
 const ctx = canvas.getContext('2d');
 
 let walkingSprite;
+let paperAgenda1 = new paperAgenda(500, 500);
 
 function init() {
   walkingSprite = new Sprite({
@@ -36,6 +37,8 @@ function draw() {
 
   walkingSprite.draw();
   walkingSprite.nextFrame();
+
+  paperAgenda1.draw();
 }
 
 init();
