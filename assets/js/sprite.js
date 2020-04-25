@@ -1,6 +1,7 @@
 class Sprite {
   image;
   src = undefined;
+  scale = 0.5;
 
   width;
   height;
@@ -76,8 +77,8 @@ class Sprite {
       this.height,
       this.x,
       this.y,
-      this.width,
-      this.height
+      this.width * this.scale,
+      this.height * this.scale
     );
   }
 

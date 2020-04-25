@@ -2,10 +2,11 @@ class paperAgenda {
   image;
   x;
   y;
-  speedX = 1;
-  speedY = 1;
+  SpeedX = 1;
+  SpeedY = 1;
+  scale = 0.5;
 
-  constructor(theX, theY) {
+  constructor(theX, theY, speedX, speedY) {
     console.log(theX, theY);
 
     this.x = theX;
@@ -33,7 +34,13 @@ class paperAgenda {
   draw() {
     ctx.beginPath();
     // drawImage(image, dx, dy, dWidth, dHeight);
-    ctx.drawImage(this.image, this.x, this.y, 600, 600);
+    ctx.drawImage(
+      this.image,
+      this.x,
+      this.y,
+      600 * this.scale,
+      600 * this.scale
+    );
   }
 
   move() {
