@@ -1,44 +1,50 @@
 //    Practice Week-10
-// const canvas = document.querySelector('.game');
-// const ctx = canvas.getContext('2d');
-
-// function tick() {
-//   console.log('tick');
-
-//   window.requestAnimationFrame(tick);
-// }
-
-// tick();
-
 const canvas = document.querySelector('.world');
 const ctx = canvas.getContext('2d');
 
-let walkingSprite;
-let paperAgenda1 = new paperAgenda(250, 160);
+const bg = new Background();
+const player = new Player();
 
-function init() {
-  walkingSprite = new Sprite({
-    x: 0,
-    y: 0,
-    frameCount: 3,
-    src: './assets/img/estela.png',
-  });
+function tick() {
+  console.log('tick');
 
-  walkingSprite.animation = new AnimationFrame(8, () => draw());
-  walkingSprite.animation.start();
+  bg.tick();
+  player.tick();
+
+  window.requestAnimationFrame(tick);
 }
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+tick();
 
-  // Position
-  walkingSprite.x = (canvas.width - walkingSprite.width) / 10;
-  walkingSprite.y = (canvas.height - walkingSprite.height) / 0.15;
+// const canvas = document.querySelector('.world');
+// const ctx = canvas.getContext('2d');
 
-  walkingSprite.draw();
-  walkingSprite.nextFrame();
+// let walkingSprite;
+// let paperAgenda1 = new paperAgenda(250, 160);
 
-  paperAgenda1.draw();
-}
+// function init() {
+//   walkingSprite = new Sprite({
+//     x: 0,
+//     y: 0,
+//     frameCount: 3,
+//     src: './assets/img/estela.png',
+//   });
 
-init();
+//   walkingSprite.animation = new AnimationFrame(8, () => draw());
+//   walkingSprite.animation.start();
+// }
+
+// function draw() {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+//   // Position
+//   walkingSprite.x = (canvas.width - walkingSprite.width) / 10;
+//   walkingSprite.y = (canvas.height - walkingSprite.height) / 0.15;
+
+//   walkingSprite.draw();
+//   walkingSprite.nextFrame();
+
+//   paperAgenda1.draw();
+// }
+
+// init();
