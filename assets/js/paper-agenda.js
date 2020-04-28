@@ -4,7 +4,7 @@ class paperAgenda {
   y;
   SpeedX = 1;
   SpeedY = 1;
-  scale = 0.5;
+  scale = 0.4;
 
   constructor(theX, theY, speedX, speedY) {
     console.log(theX, theY);
@@ -38,8 +38,8 @@ class paperAgenda {
       this.image,
       this.x,
       this.y,
-      600 * this.scale,
-      600 * this.scale
+      161 * this.scale,
+      221 * this.scale
     );
   }
 
