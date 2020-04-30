@@ -1,20 +1,24 @@
 class Background {
+  image;
+
   constructor() {
-    this.background = new Sprite({
+    this.image = new Sprite({
       x: 0,
       y: 0,
       frameCount: 10,
       src: './assets/img/background.png',
     });
 
-    this.background.animation = new AnimationFrame(2, () => this.draw());
-    this.background.animation.start();
+    this.image.animation = new AnimationFrame(2, () => {
+      this.image.nextFrame();
+    });
+
+    this.image.animation.start();
   }
 
   tick() {
-    this.background.draw();
-    this.background.nextFrame();
+    this.image.draw();
   }
 
-  draw() {}
+  _draw() {}
 }

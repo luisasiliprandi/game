@@ -1,4 +1,14 @@
 class Player {
+  // function init same?
+
+  // function init() {
+  //   walkingSprite = new Sprite({
+  //     x: 0,
+  //     y: 0,
+  //     frameCount: 3,
+  //     src: './assets/img/estela.png',
+  //   });
+
   constructor() {
     this.player = new Sprite({
       x: 0,
@@ -7,8 +17,16 @@ class Player {
       src: './assets/img/estela.png',
     });
 
-    // this.player.animation = new AnimationFrame(3, () => this.draw());
-    // this.player.animation.start();
+    //velocity change code
+    this.player.animation = new AnimationFrame(8, () => this.draw());
+    this.player.animation.start();
+
+    //  new velocity change code
+    // const animation = new AnimationFrame(4, () => tick());
+
+    // function update() {
+    // do something
+    // }
   }
 
   tick() {

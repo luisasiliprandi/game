@@ -1,38 +1,35 @@
-class paperAgenda {
+class PaperAgenda {
   image;
-  x;
-  y;
-  SpeedX = 1;
-  SpeedY = 1;
+  x = 0;
+  y = 0;
+  speedX = 1;
+  speedY = 1;
   scale = 0.5;
 
   constructor(theX, theY, speedX, speedY) {
     console.log(theX, theY);
 
-    this.x = theX;
-    this.y = theY;
+    this.x = theX ?? this.x;
+    this.y = theY ?? this.y;
 
-    if (speedX !== undefined) {
-      this.SpeedX = speedX;
-    }
-    if (speedY !== undefined) {
-      this.SpeedY = speedY;
-    }
+    this.speedX = speedX ?? this.speedX;
+    this.speedY = speedY ?? this.speedY;
 
-    this.loadImages();
+    this._loadImages();
   }
 
-  loadImages() {
+  _loadImages() {
     this.image = new Image();
 
     this.image.onload = () => {
-      this.draw();
+      this._draw();
     };
     this.image.src = './assets/img/paper-agenda.png';
   }
 
-  draw() {
-    ctx.beginPath();
+  _draw() {
+    //console.info(`PaperAgenda: _draw`);
+    // ctx.beginPath();
     // drawImage(image, dx, dy, dWidth, dHeight);
     ctx.drawImage(
       this.image,
@@ -43,13 +40,15 @@ class paperAgenda {
     );
   }
 
-  move() {
+  _move() {
+    //console.info(`PaperAgenda: _move`);
     this.x += this.speedX;
     this.y += this.speedY;
   }
 
   tick() {
-    this.move();
-    this.draw();
+    //console.info(`PaperAgenda: tick`);
+    this._draw();
+    //this._move();
   }
 }
