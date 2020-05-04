@@ -2,7 +2,22 @@
   border: 1px solid #ccc;
   background-color: #fff;
 }
+.score {
+  font: size 20px;
+  font-family: 'ProximaNova' bold;
+  color: purple;
+  font-weight: 500;
+}
+
+.lives {
+  font: size 20px;
+  font-family: 'ProximaNova' bold;
+  color: purple;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 15fr;
+}
 
 body {
-  background-color: #ccc;
+  background-color: white;
 }

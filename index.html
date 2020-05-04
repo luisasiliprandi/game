@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Estela's world</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link @font-face { font-family: ProximaNova; src:
+    url(ProximaNovaA-Bold.ttf); } div { font-family: ProximaNova; } />
   </head>
   <body>
     <canvas id="game" class="world" width="640" height="360"></canvas>
-
+    <div class="score">Score: 0</div>
+    <div class="lives">
+      <p>Lives:</p>
+      <img src="./assets/img/lives.png" alt="lives" width="20" />
+      <img src="./assets/img/lives.png" alt="lives" width="20" />
+      <img src="./assets/img/lives.png" alt="lives" width="20" />
+    </div>
     <script src="./assets/js/libs/animation-frame.js"></script>
     <script src="./assets/js/libs/sprite.js"></script>
-    <script src="./assets/js/libs/state-machine.js"></script>
     <script src="./assets/js/libs/random-js.umd.min.js"></script>
 
     <script src="./assets/js/background.js"></script>
     <script src="./assets/js/player.js"></script>
     <script src="./assets/js/paper-agenda.js"></script>
-    <script src="./assets/js/jumping-player.js"></script>
+    <script src="./assets/js/key.js"></script>
     <script src="./assets/js/index.js"></script>
   </body>
 </html>

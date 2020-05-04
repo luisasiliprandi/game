@@ -9,7 +9,7 @@ class Background {
       src: './assets/img/background.png',
     });
 
-    this.image.animation = new AnimationFrame(2, () => {
+    this.image.animation = new AnimationFrame(7, () => {
       this.image.nextFrame();
     });
 

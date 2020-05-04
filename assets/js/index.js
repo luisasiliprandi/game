@@ -4,7 +4,34 @@ const random = new Random.Random();
 
 const bg = new Background();
 const player = new Player();
-const jp = new JumpingPlayer();
+const key = new Key();
+
+const playerLives = 3;
+const score = 0;
+
+function isCollided() {}
+
+function updateLives() {
+  // detecting contact between the player and the paperAgenda
+  if (isCollided == true) {
+    if (playerLives > 1) {
+      playerLives -= 1;
+    } else if (playerLives === 1) {
+      //game end
+    }
+  }
+}
+
+function updateScore() {
+  // when the game doesn't end
+  setInterval(updateTime, 1000);
+}
+
+function updateTime() {
+  ++score;
+}
+// Output the result
+// document.getElementById('score').innerHTML;
 
 // Create multiple paper agendas
 const paperAgendas = [];
@@ -17,7 +44,6 @@ function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   bg.tick();
-  //jp.tick();
   player.tick();
 
   paperAgendas.forEach((pa) => {
@@ -25,48 +51,35 @@ function tick() {
   });
 
   window.requestAnimationFrame(tick);
+
+  updateLives();
+  updateScore();
 }
 
 tick();
 
-//Use of add event listener for starting game?
+window.addEventListener(
+  'keyup',
+  function (event) {
+    key.onKeyup(event);
+  },
+  false
+);
 
-// if (key == 'w'|| key === 'arrowup') {
-// player.moveUp();
-// }
+window.addEventListener(
+  'keydown',
+  function (event) {
+    key.isDown(event);
+  },
+  false
+);
 
-// document.addEventListener('keyUp', onKeyUp);
+// End Game
 
-// Old animation index
-// const canvas = document.querySelector('.world');
-// const ctx = canvas.getContext('2d');
-
-// let walkingSprite;
-// let paperAgenda1 = new paperAgenda(250, 160);
-
-// function init() {
-//   walkingSprite = new Sprite({
-//     x: 0,
-//     y: 0,
-//     frameCount: 3,
-//     src: './assets/img/estela.png',
-//   });
-
-//   walkingSprite.animation = new AnimationFrame(8, () => draw());
-//   walkingSprite.animation.start();
-// }
-
-// function draw() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//   // Position
-//   walkingSprite.x = (canvas.width - walkingSprite.width) / 10;
-//   walkingSprite.y = (canvas.height - walkingSprite.height) / 0.15;
-
-//   walkingSprite.draw();
-//   walkingSprite.nextFrame();
-
-//   paperAgenda1.draw();
-// }
-
-// init();
+if (isGameOver == true) {
+  gameFail();
+} else if (isGameWin == true) {
+  gameSuccess();
+} else {
+  window.requestAnimationFrame(this.tick.bind(this));
+}
