@@ -1,6 +1,3 @@
-let isGameOver = false;
-let isGameWin = false;
-
 function isCollided(player, paperAgenda) {
   if (
     player.x < paperAgenda.x + paperAgenda.width &&
@@ -14,14 +11,14 @@ function isCollided(player, paperAgenda) {
   return false;
 }
 
-setInterval(isKeyPressed, 1);
-let isWPressed = false;
+function updateLivesHTML() {
+  const $lives = document.querySelector('.num-lives');
 
-function isKeyPressed() {
-  if (key.isDown(key.UP)) {
-    isWPressed = true;
-  }
+  $lives.style.width = `${15 * playerLives}px`;
 }
-if (key.isDown(key.UP)) {
-  isSpacePressed = true;
+
+function updateScoreHTML() {
+  const $score = document.querySelector('.score');
+
+  $score.innerText = score;
 }

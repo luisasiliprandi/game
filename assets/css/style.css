@@ -20,8 +20,17 @@ body {
 
   color: purple;
   font-weight: 500;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 15fr;
+  /* display: grid;
+  grid-template-columns: 2fr 1fr 1fr 15fr; */
+}
+
+.num-lives {
+  display: inline-block;
+  width: calc(15px * 3);
+  height: 20px;
+
+  background-image: url('../img/lives.png');
+  background-size: contain;
 }
 
 body {

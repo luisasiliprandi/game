@@ -5,24 +5,40 @@ const random = new Random.Random();
 const bg = new Background();
 const player = new Player();
 
-const playerLives = 3;
-const score = 0;
+let playerLives = 3;
+let score = 0;
+let isGameOver = false;
+let isGameWin = false;
 
-// function updateLives() {
-//   // detecting contact between the player and the paperAgenda
-//   if (isCollided == true) {
-//     if (playerLives > 1) {
-//       playerLives -= 1;
-//     } else if (playerLives === 1) {
-//       //game end
-//     }
-//   }
-// }
+let scorePID;
 
-// function updateScore() {
-//   // when the game doesn't end
-//   setInterval(updateTime, 1000);
-// }
+function endGame() {
+  isGameOver = true;
+  clearInterval(scorePID);
+  console.info(score);
+}
+
+function updateLives() {
+  // detecting contact between the player and the paperAgenda
+  if (isCollided(player.sprite, paperAgendas[0]) == true) {
+    if (playerLives > 0) {
+      playerLives -= 1;
+    } else {
+      //game end
+      endGame();
+    }
+
+    updateLivesHTML();
+  }
+}
+
+function updateScore() {
+  // when the game doesn't end
+  scorePID = setInterval(() => {
+    score++;
+    updateScoreHTML();
+  }, 1000);
+}
 
 // function updateTime() {
 //   ++score;
@@ -50,12 +66,14 @@ function tick() {
     pa.tick();
   });
 
-  // updateLives();
-  // updateScore();
+  updateLives();
 
-  window.requestAnimationFrame(tick);
+  if (isGameOver === false) {
+    window.requestAnimationFrame(tick);
+  }
 }
 tick();
+updateScore();
 
 function onKeyDown(event) {
   const key = event.key.toLowerCase();
