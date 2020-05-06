@@ -4,38 +4,38 @@ const random = new Random.Random();
 
 const bg = new Background();
 const player = new Player();
-const key = new Key();
 
 const playerLives = 3;
 const score = 0;
 
-function isCollided() {}
+// function updateLives() {
+//   // detecting contact between the player and the paperAgenda
+//   if (isCollided == true) {
+//     if (playerLives > 1) {
+//       playerLives -= 1;
+//     } else if (playerLives === 1) {
+//       //game end
+//     }
+//   }
+// }
 
-function updateLives() {
-  // detecting contact between the player and the paperAgenda
-  if (isCollided == true) {
-    if (playerLives > 1) {
-      playerLives -= 1;
-    } else if (playerLives === 1) {
-      //game end
-    }
-  }
-}
+// function updateScore() {
+//   // when the game doesn't end
+//   setInterval(updateTime, 1000);
+// }
 
-function updateScore() {
-  // when the game doesn't end
-  setInterval(updateTime, 1000);
-}
-
-function updateTime() {
-  ++score;
-}
+// function updateTime() {
+//   ++score;
+// }
 // Output the result
 // document.getElementById('score').innerHTML;
 
 // Create multiple paper agendas
 const paperAgendas = [];
-paperAgendas.push(new PaperAgenda(random.integer(1, 100), 160));
+paperAgendas.push(new PaperAgenda(random.integer(1, 500), 160));
+
+paperAgendas.push(new PaperAgenda(150, 160));
+paperAgendas.push(new PaperAgenda(250, 160));
 paperAgendas.push(new PaperAgenda(350, 160));
 paperAgendas.push(new PaperAgenda(450, 160));
 paperAgendas.push(new PaperAgenda(550, 160));
@@ -50,36 +50,31 @@ function tick() {
     pa.tick();
   });
 
+  // updateLives();
+  // updateScore();
+
   window.requestAnimationFrame(tick);
-
-  updateLives();
-  updateScore();
 }
-
 tick();
 
-window.addEventListener(
-  'keyup',
-  function (event) {
-    key.onKeyup(event);
-  },
-  false
-);
+function onKeyDown(event) {
+  const key = event.key.toLowerCase();
 
-window.addEventListener(
-  'keydown',
-  function (event) {
-    key.isDown(event);
-  },
-  false
-);
+  console.log(`"${key}" was pressed.`);
+
+  if (key === 'space' || key === 'w') {
+    player.jump();
+  }
+}
+
+document.addEventListener('keydown', onKeyDown);
 
 // End Game
 
-if (isGameOver == true) {
-  gameFail();
-} else if (isGameWin == true) {
-  gameSuccess();
-} else {
-  window.requestAnimationFrame(this.tick.bind(this));
-}
+// if (isGameOver == true) {
+//   gameFail();
+// } else if (isGameWin == true) {
+//   gameSuccess();
+// } else {
+//   window.requestAnimationFrame(this.tick.bind(this));
+// }

@@ -1,17 +1,23 @@
+body {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
 .world {
   border: 1px solid #ccc;
   background-color: #fff;
 }
 .score {
-  font: size 20px;
-  font-family: 'ProximaNova' bold;
+  font-size: 20px;
+
   color: purple;
   font-weight: 500;
 }
 
 .lives {
-  font: size 20px;
-  font-family: 'ProximaNova' bold;
+  font-size: 20px;
+
   color: purple;
   font-weight: 500;
   display: grid;

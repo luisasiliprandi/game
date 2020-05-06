@@ -44,11 +44,12 @@ class PaperAgenda {
     //console.info(`PaperAgenda: _move`);
     this.x += this.speedX;
     this.y += this.speedY;
+
   }
 
   tick() {
     //console.info(`PaperAgenda: tick`);
     this._draw();
-    //this._move();
+    // this._move();
   }
 }
