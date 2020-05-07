@@ -5,6 +5,14 @@ const random = new Random.Random();
 const bg = new Background();
 const player = new Player();
 
+// audios from freesound.org
+let backgroundAudio = document.createElement('audio');
+backgroundAudio.src = 'assets/sound/background.wav';
+let dieAudio = document.createElement('audio');
+dieAudio.src = 'assets/sound/die.flac';
+
+backgroundAudio.play();
+
 let playerLives = 3;
 let score = 0;
 let isGameOver = false;
@@ -16,6 +24,9 @@ function endGame() {
   isGameOver = true;
   clearInterval(scorePID);
   console.info(score);
+
+  // stop audio when game ends
+  backgroundAudio.pause();
 }
 
 function updateLives() {
@@ -26,6 +37,7 @@ function updateLives() {
     } else {
       //game end
       endGame();
+      dieAudio.play();
     }
 
     updateLivesHTML();
