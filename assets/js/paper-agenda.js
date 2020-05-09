@@ -7,9 +7,9 @@ class PaperAgenda {
 
   // Private
   _image;
-  _speedX = 1;
+  _speedX = -2;
   _speedY = 1;
-  _scale = 0.5;
+  _scale = 0.45;
 
   constructor(theX, theY, speedX, speedY) {
     //console.log(theX, theY);
@@ -48,12 +48,22 @@ class PaperAgenda {
   _move() {
     //console.info(`PaperAgenda: _move`);
     this.x += this._speedX;
-    this.y += this._speedY;
+    //this.y += this._speedY;
+
+    // if (this.x + this.width < 0) {
+    // this.isOffScreen = true;
+    // return;
+    // }
+
+    //this.x += -speed;
   }
 
   tick() {
-    //console.info(`PaperAgenda: tick`);
+    // console.info(`PaperAgenda: tick`);
+    //  if (this.isOffScreen) {
+    //   return;
+    // }
     this._draw();
-    // this._move();
+    this._move();
   }
 }

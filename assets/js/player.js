@@ -61,7 +61,7 @@ class Player {
 
     setTimeout(() => {
       this._switchAnimation(this._spriteRun);
-    }, 500);
+    }, 1000);
   }
 
   _draw() {}

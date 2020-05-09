@@ -8,17 +8,49 @@ body {
   border: 1px solid #ccc;
   background-color: #fff;
 }
+.start-screen {
+  position: absolute;
+  top: 10px;
+  /* bottom: 5; */
+  left: 9px;
+  /* right: 5; */
+  /* display: grid; */
+}
+
+.start-screen-content {
+  position: absolute;
+  top: 200px;
+  left: 700px;
+  /* display: grid; */
+  /* height: 100%;
+  width: 100%; */
+}
+
+.start-button {
+  height: 66px;
+  width: 244px;
+  background: white;
+  border-radius: 33px;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #a72b87;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  justify-self: center;
+}
 .score {
   font-size: 20px;
 
-  color: purple;
+  color: #a72b87;
   font-weight: 500;
 }
 
 .lives {
   font-size: 20px;
 
-  color: purple;
+  color: #a72b87;
   font-weight: 500;
   /* display: grid;
   grid-template-columns: 2fr 1fr 1fr 15fr; */

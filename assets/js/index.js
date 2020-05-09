@@ -6,12 +6,14 @@ const bg = new Background();
 const player = new Player();
 
 // audios from freesound.org
-let backgroundAudio = document.createElement('audio');
-backgroundAudio.src = 'assets/sound/background.wav';
-let dieAudio = document.createElement('audio');
-dieAudio.src = 'assets/sound/die.flac';
+const backgroundAudio = new Sound('assets/sound/background.wav');
 
 backgroundAudio.play();
+backgroundAudio.loop = true;
+
+console.log(backgroundAudio.loop);
+
+const dieAudio = new Sound('assets/sound/die.mp3');
 
 let playerLives = 3;
 let score = 0;
@@ -32,6 +34,7 @@ function endGame() {
 function updateLives() {
   // detecting contact between the player and the paperAgenda
   if (isCollided(player.sprite, paperAgendas[0]) == true) {
+    paperAgendas.splice(0, 1);
     if (playerLives > 0) {
       playerLives -= 1;
     } else {
@@ -60,16 +63,31 @@ function updateScore() {
 
 // Create multiple paper agendas
 const paperAgendas = [];
-paperAgendas.push(new PaperAgenda(random.integer(1, 500), 160));
 
-paperAgendas.push(new PaperAgenda(150, 160));
-paperAgendas.push(new PaperAgenda(250, 160));
-paperAgendas.push(new PaperAgenda(350, 160));
-paperAgendas.push(new PaperAgenda(450, 160));
-paperAgendas.push(new PaperAgenda(550, 160));
+//function newPaperAgenda() {
+
+//}
+//setInterval(createPaperAgenda(), 200);
+
+//newPaperAgenda();
+
+// paperAgendas.push(new PaperAgenda(150, 160));
+// paperAgendas.push(new PaperAgenda(250, 160));
+// paperAgendas.push(new PaperAgenda(350, 160));
+// paperAgendas.push(new PaperAgenda(450, 160));
+// paperAgendas.push(new PaperAgenda(550, 160));
+// paperAgendas.push(new PaperAgenda(550, 160));
+
+let paperAgendaCounter = 0;
 
 function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (paperAgendaCounter % 60 == 0) {
+    paperAgendas.push(new PaperAgenda(random.integer(600, 900), 155));
+  }
+
+  paperAgendaCounter += 1;
 
   bg.tick();
   player.tick();
@@ -77,6 +95,8 @@ function tick() {
   paperAgendas.forEach((pa) => {
     pa.tick();
   });
+
+  console.log(paperAgendas.length);
 
   updateLives();
 
