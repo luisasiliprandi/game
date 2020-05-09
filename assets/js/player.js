@@ -5,6 +5,7 @@ class Player {
   // private
   _spriteRun;
   _spriteJump;
+  _scale = 0.5;
 
   constructor() {
     // running player
@@ -24,7 +25,7 @@ class Player {
     this._spriteJump = new Sprite({
       x: 0,
       y: 0,
-      frameCount: 4,
+      frameCount: 5,
       src: './assets/img/jump.png',
     });
 
@@ -64,4 +65,11 @@ class Player {
   }
 
   _draw() {}
+  //  ctx.drawImage(
+  //     this._image,
+  //     this.x,
+  //     this.y,
+  //     this.width * this._scale,
+  //     this.height * this._scale
+  //   );
 }

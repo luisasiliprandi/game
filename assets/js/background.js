@@ -5,7 +5,7 @@ class Background {
     this.image = new Sprite({
       x: 0,
       y: 0,
-      frameCount: 21,
+      frameCount: 22,
       src: './assets/img/background.png',
     });
 
