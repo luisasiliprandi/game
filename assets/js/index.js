@@ -6,7 +6,7 @@ const bg = new Background();
 const player = new Player();
 
 // audios from freesound.org
-const backgroundAudio = new Sound('assets/sound/background.wav');
+const backgroundAudio = new Sound('assets/sound/background.mp3');
 
 backgroundAudio.play();
 backgroundAudio.loop = true;
@@ -15,11 +15,13 @@ console.log(backgroundAudio.loop);
 
 const dieAudio = new Sound('assets/sound/die.mp3');
 
+//player starts with 3 lives and score = 0
 let playerLives = 3;
 let score = 0;
+
 let isGameOver = false;
 let isGameWin = false;
-
+let isMuted = false;
 let scorePID;
 
 function endGame() {
@@ -31,6 +33,7 @@ function endGame() {
   backgroundAudio.pause();
 }
 
+// updates lives after player colliding with paperAgenda
 function updateLives() {
   // detecting contact between the player and the paperAgenda
   if (isCollided(player.sprite, paperAgendas[0]) == true) {
@@ -38,7 +41,7 @@ function updateLives() {
     if (playerLives > 0) {
       playerLives -= 1;
     } else {
-      //game end
+      // when game ends, plays die audio
       endGame();
       dieAudio.play();
     }
@@ -48,43 +51,24 @@ function updateLives() {
 }
 
 function updateScore() {
-  // when the game doesn't end
+  // when the game doesn't end updates score according to milliseconds
   scorePID = setInterval(() => {
     score++;
     updateScoreHTML();
-  }, 1000);
+  }, 400);
 }
 
-// function updateTime() {
-//   ++score;
-// }
-// Output the result
-// document.getElementById('score').innerHTML;
-
-// Create multiple paper agendas
 const paperAgendas = [];
-
-//function newPaperAgenda() {
-
-//}
-//setInterval(createPaperAgenda(), 200);
-
-//newPaperAgenda();
-
-// paperAgendas.push(new PaperAgenda(150, 160));
-// paperAgendas.push(new PaperAgenda(250, 160));
-// paperAgendas.push(new PaperAgenda(350, 160));
-// paperAgendas.push(new PaperAgenda(450, 160));
-// paperAgendas.push(new PaperAgenda(550, 160));
-// paperAgendas.push(new PaperAgenda(550, 160));
 
 let paperAgendaCounter = 0;
 
 function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  if (paperAgendaCounter % 60 == 0) {
-    paperAgendas.push(new PaperAgenda(random.integer(600, 900), 155));
+  //create multiple paper agendas each x ticks
+
+  if (paperAgendaCounter % 80 == 0) {
+    paperAgendas.push(new PaperAgenda(random.integer(600, 900), 200));
   }
 
   paperAgendaCounter += 1;
@@ -104,6 +88,7 @@ function tick() {
     window.requestAnimationFrame(tick);
   }
 }
+
 tick();
 updateScore();
 
@@ -112,19 +97,10 @@ function onKeyDown(event) {
 
   console.log(`"${key}" was pressed.`);
 
-  if (key === 'space' || key === 'w') {
+  // press SPACE or W to jump
+  if (key === ' ' || key === 'w') {
     player.jump();
   }
 }
 
 document.addEventListener('keydown', onKeyDown);
-
-// End Game
-
-// if (isGameOver == true) {
-//   gameFail();
-// } else if (isGameWin == true) {
-//   gameSuccess();
-// } else {
-//   window.requestAnimationFrame(this.tick.bind(this));
-// }
