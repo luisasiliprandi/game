@@ -10,27 +10,22 @@ body {
 }
 .start-screen {
   position: absolute;
-  top: 10px;
-  /* bottom: 5; */
-  left: 9px;
-  /* right: 5; */
-  /* display: grid; */
+  top: 7px;
+  left: 10px;
 }
 
 .start-screen-content {
   position: absolute;
   top: 200px;
-  left: 700px;
-  /* display: grid; */
-  /* height: 100%;
-  width: 100%; */
+  left: 260px;
 }
 
 .start-button {
-  height: 66px;
-  width: 244px;
+  height: 40px;
+  width: 100px;
   background: white;
-  border-radius: 33px;
+  border-radius: 25px;
+  font-size: 20px;
   font-family: proxima-nova, sans-serif;
   font-weight: 800;
   font-style: normal;
@@ -40,6 +35,29 @@ body {
   outline: none;
   justify-self: center;
 }
+
+.restart-button {
+  height: 40px;
+  width: 100px;
+  background: white;
+  border-radius: 25px;
+  font-size: 20px;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #a72b87;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  justify-self: center;
+}
+
+.tutorial {
+  font-size: 15px;
+  color: #33ada0;
+  font-weight: 500;
+}
+
 .score {
   font-size: 20px;
 
@@ -52,8 +70,6 @@ body {
 
   color: #a72b87;
   font-weight: 500;
-  /* display: grid;
-  grid-template-columns: 2fr 1fr 1fr 15fr; */
 }
 
 .num-lives {

@@ -61,15 +61,8 @@ class Player {
 
     setTimeout(() => {
       this._switchAnimation(this._spriteRun);
-    }, 300);
+    }, 400);
   }
 
   _draw() {}
-  //  ctx.drawImage(
-  //     this._image,
-  //     this.x,
-  //     this.y,
-  //     this.width * this._scale,
-  //     this.height * this._scale
-  //   );
 }

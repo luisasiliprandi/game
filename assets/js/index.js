@@ -1,5 +1,9 @@
 const canvas = document.querySelector('.world');
 const ctx = canvas.getContext('2d');
+const startScreen = document.getElementById('start-screen');
+const startBtn = document.getElementById('start-button');
+const restartContent = document.getElementById('restart');
+const restartBtn = document.getElementById('restart-button');
 const random = new Random.Random();
 
 const bg = new Background();
@@ -8,10 +12,16 @@ const player = new Player();
 // audios from freesound.org
 const backgroundAudio = new Sound('assets/sound/background.mp3');
 
-backgroundAudio.play();
-backgroundAudio.loop = true;
+//start game
+startBtn.onclick = function () {
+  backgroundAudio.play();
+  startScreen.style.display = 'none';
+  tick();
+  backgroundAudio.play();
+  backgroundAudio.loop = true;
 
-console.log(backgroundAudio.loop);
+  console.log(backgroundAudio.loop);
+};
 
 const dieAudio = new Sound('assets/sound/die.mp3');
 
@@ -27,6 +37,21 @@ function endGame() {
   isGameOver = true;
   clearInterval(scorePID);
   console.info(score);
+  // //display Message
+  // displayMessage(
+  //   `Oops, game ended! Next time watch out for the paper agendas! `,
+  //   110,
+  //   canvas.width,
+  //   canvas.height,
+  //   `white`
+  // );
+  // displayMessage(
+  //   `your score: ${score}`,
+  //   30,
+  //   canvas.width,
+  //   canvas.height,
+  //   `#404040`
+  // );
 
   // stop audio when game ends
   backgroundAudio.pause();
@@ -35,7 +60,7 @@ function endGame() {
 // updates lives after player colliding with paperAgenda
 function updateLives() {
   // detecting contact between the player and the paperAgenda
-  if (isCollided(player.sprite, paperAgendas[0]) == true) {
+  if (isCollided(player._spriteRun, paperAgendas[0]) == true) {
     paperAgendas.splice(0, 1);
     if (playerLives > 0) {
       playerLives -= 1;
@@ -67,7 +92,7 @@ function tick() {
   //create multiple paper agendas each x ticks
 
   if (paperAgendaCounter % 80 == 0) {
-    paperAgendas.push(new PaperAgenda(random.integer(600, 900), 200));
+    paperAgendas.push(new PaperAgenda(random.integer(600, 900), 205));
   }
 
   paperAgendaCounter += 1;
