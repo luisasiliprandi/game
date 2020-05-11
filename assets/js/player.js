@@ -25,12 +25,12 @@ class Player {
     this._spriteJump = new Sprite({
       x: 0,
       y: 0,
-      frameCount: 5,
+      frameCount: 3,
       src: './assets/img/jump.png',
     });
 
     // Set animation for running Sprite
-    this._spriteJump.animation = new AnimationFrame(7, () => {
+    this._spriteJump.animation = new AnimationFrame(6, () => {
       this._spriteJump.nextFrame();
     });
 
@@ -61,7 +61,7 @@ class Player {
 
     setTimeout(() => {
       this._switchAnimation(this._spriteRun);
-    }, 1000);
+    }, 300);
   }
 
   _draw() {}

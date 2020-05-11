@@ -7,9 +7,9 @@ class PaperAgenda {
 
   // Private
   _image;
-  _speedX = -2;
+  _speedX = -5;
   _speedY = 1;
-  _scale = 0.45;
+  _scale = 0.35;
 
   constructor(theX, theY, speedX, speedY) {
     //console.log(theX, theY);

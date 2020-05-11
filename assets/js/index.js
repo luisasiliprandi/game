@@ -21,7 +21,6 @@ let score = 0;
 
 let isGameOver = false;
 let isGameWin = false;
-let isMuted = false;
 let scorePID;
 
 function endGame() {
